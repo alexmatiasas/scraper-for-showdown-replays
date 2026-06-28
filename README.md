@@ -1,0 +1,1 @@
+# scrapper for showdown replays
