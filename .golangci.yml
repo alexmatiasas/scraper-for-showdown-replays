@@ -6,10 +6,9 @@ linters:
     - govet
     - staticcheck
     - revive
-    - gosimple
     - unused
     - ineffassign
-    - goimports
+    - staticcheck
   settings:
     staticcheck:
       checks: ["all"]
