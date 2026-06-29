@@ -9,6 +9,11 @@ type SearchResult struct {
 	UploadTime int64    `json:"uploadtime"`
 }
 
+type SearchResponse struct {
+	Results []SearchResult
+	HasMore bool
+}
+
 type Replay struct {
 	ID         string   `json:"id"`
 	Format     string   `json:"format"`
