@@ -1,0 +1,34 @@
+version: "2"
+linters:
+  default: standard
+  enable:
+    - errcheck
+    - govet
+    - staticcheck
+    - revive
+    - gosimple
+    - unused
+    - ineffassign
+    - goimports
+  settings:
+    staticcheck:
+      checks: ["all"]
+    revive:
+      rules:
+        - name: exported
+          severity: warning
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - goimports
+    - gofumpt
