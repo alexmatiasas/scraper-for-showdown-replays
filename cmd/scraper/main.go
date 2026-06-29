@@ -1,1 +1,1 @@
-package scraper
+package main
