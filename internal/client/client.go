@@ -16,7 +16,7 @@ import (
 )
 
 const (
-	baseURL     string = "http://replays.pokemonshowdown.com"
+	baseURL     string = "http://replay.pokemonshowdown.com"
 	maxResults  int    = 51
 	maxBodySize int    = 10 << 20
 )
@@ -40,7 +40,7 @@ func (c *Client) Search(ctx context.Context, format string, before int64) (*mode
 
 	u := (&url.URL{
 		Scheme:   "http",
-		Host:     "replays.pokemonshowdown.com",
+		Host:     "replay.pokemonshowdown.com",
 		Path:     "/search.json",
 		RawQuery: params.Encode(),
 	}).String()
