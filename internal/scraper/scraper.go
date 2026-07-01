@@ -35,7 +35,7 @@ func New(c *client.Client, cfg Config) *Scraper {
 }
 
 // Run executes the complete pipeline: feed -> workers -> collector.
-func (s *Scraper) Run(ctx context.Context, format string, limit int) error {
+func (s *Scraper) Run(ctx context.Context, format models.Format, limit int) error {
 	jobs := make(chan string, s.config.Workers)
 	results := make(chan *models.Replay, s.config.Workers)
 
@@ -82,7 +82,7 @@ func (s *Scraper) Run(ctx context.Context, format string, limit int) error {
 }
 
 // feedJobs paginates the API Search and sends IDs to the channel.
-func (s *Scraper) feedJobs(ctx context.Context, format string, limit int, jobs chan<- string) error {
+func (s *Scraper) feedJobs(ctx context.Context, format models.Format, limit int, jobs chan<- string) error {
 	defer close(jobs)
 
 	var before int64 = 0

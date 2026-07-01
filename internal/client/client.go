@@ -31,8 +31,8 @@ func NewClient(timeout time.Duration) *Client {
 	}
 }
 
-func (c *Client) Search(ctx context.Context, format string, before int64) (*models.SearchResponse, error) {
-	params := url.Values{"format": []string{format}}
+func (c *Client) Search(ctx context.Context, format models.Format, before int64) (*models.SearchResponse, error) {
+	params := url.Values{"format": []string{string(format)}}
 
 	if before > 0 {
 		params.Set("before", strconv.FormatInt(before, 10))
