@@ -47,7 +47,6 @@ func (s *Scraper) Run(ctx context.Context, format models.Format, limit int) erro
 		go func(workerID int) {
 			defer wg.Done()
 			s.worker(ctx, workerID, jobs, results)
-
 		}(i)
 	}
 
@@ -110,7 +109,7 @@ func (s *Scraper) feedJobs(ctx context.Context, format models.Format, limit int,
 		}
 
 		if !resp.HasMore {
-			return nil //not more available replays
+			return nil
 		}
 
 		before = resp.Results[len(resp.Results)-1].UploadTime
@@ -128,7 +127,6 @@ func (s *Scraper) worker(ctx context.Context, id int, jobs <-chan string, result
 		time.Sleep(s.config.Delay)
 
 		replay, err := s.client.FetchReplay(ctx, JobID)
-
 		if err != nil {
 			log.Printf("Worker %d: error fetching %s: %v", id, JobID, err)
 			continue
