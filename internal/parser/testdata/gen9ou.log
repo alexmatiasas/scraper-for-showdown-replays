@@ -1,0 +1,37 @@
+|gametype|singles
+|player|p1|Alice|trainer|1500
+|player|p2|Bob|trainer|
+|gen|9
+|rated|
+|rule|HP Percentage Mod: HP is shown in percentages
+|poke|p1|Garchomp, M|
+|poke|p2|Flutter Mane, F|Booster Energy
+|teampreview
+|t:|1782964958
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|turn|1
+|switch|p1a: Garchomp|Garchomp, M|100/100
+|switch|p2a: Flutter Mane|Flutter Mane, F|100/100
+|t:|1782964964
+|move|p1a: Garchomp|Earthquake|p2a: Flutter Mane
+|-supereffective|p2a: Flutter Mane
+|-damage|p2a: Flutter Mane|0 fnt
+|faint|p2a: Flutter Mane
+|turn|2
+|t:|1782964972
+|switch|p2a: Kingambit|Kingambit, M|100/100
+|move|p1a: Garchomp|Swords Dance|p1a: Garchomp
+|-boost|p1a: Garchomp|atk|2
+|turn|3
+|t:|1782964982
+|move|p2a: Kingambit|Sucker Punch|p1a: Garchomp
+|-damage|p1a: Garchomp|80/100
+|-status|p2a: Kingambit|brn
+|-ability|p1a: Garchomp|Rough Skin
+|-terastallize|p1a: Garchomp|Steel
+|move|p1a: Garchomp|Iron Head|p2a: Kingambit
+|-damage|p2a: Kingambit|0 fnt
+|faint|p2a: Kingambit
+|win|Alice

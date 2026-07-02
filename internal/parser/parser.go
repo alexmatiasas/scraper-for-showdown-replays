@@ -90,8 +90,9 @@ func Parse(log string) (*BattleLog, error) {
 
 			// Turn control
 		case "turn":
-			currentTurn = parseTurnNumber(args)
-			battle.startTurn(currentTurn)
+			turnNum := parseTurnNumber(args)
+			currentTurn = turnNum - 1
+			battle.startTurn(turnNum)
 		case "t:":
 			battle.updateTimestamp(currentTurn, args)
 
@@ -128,7 +129,7 @@ func Parse(log string) (*BattleLog, error) {
 func (b *BattleLog) addPlayer(args string) {
 	// "|player|p1|andjelicpwnsu|wallace|1320"
 	parts := strings.Split(args, "|")
-	if len(parts) < 5 {
+	if len(parts) < 4 {
 		b.Players = append(b.Players, Player{
 			ID:     "",
 			Name:   "",
@@ -137,7 +138,7 @@ func (b *BattleLog) addPlayer(args string) {
 		// TODO: add warning or error to communicate
 		return
 	}
-	rating, _ := strconv.Atoi(parts[4])
+	rating, _ := strconv.Atoi(parts[3])
 	b.Players = append(b.Players, Player{
 		ID:     parts[0],
 		Name:   parts[1],
@@ -204,7 +205,7 @@ func parseGen(s string) int {
 func parseTurnNumber(s string) int {
 	// "|turn|1"
 	n, _ := strconv.Atoi(s)
-	return n - 1 // 0-indexed
+	return n // Turns as they came
 }
 
 func parseSwitch(eventType, args string) Event {
