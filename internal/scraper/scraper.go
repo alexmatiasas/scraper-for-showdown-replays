@@ -1,4 +1,4 @@
-// Package scraper provides a simple interface for concurrent downloading and storage of Showdown replays and storing them in the database.
+// Package scraper orchestrates concurrent downloading and storage of Pokemon Showdown replays.
 package scraper
 
 import (
