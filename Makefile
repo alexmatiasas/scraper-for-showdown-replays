@@ -17,7 +17,7 @@ build:
 	$(GO) build -o scraper ./cmd/scraper/
 
 test:
-	$(GO) test -race -count=1 ./...
+	$(GO) test -v -race -count=1 ./...
 
 clean:
 	rm -f scraper
