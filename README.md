@@ -16,21 +16,18 @@ collector goroutine.
 
 ## Demo
 
-## Demo
-
-[![asciicast](https://asciinema.org/a/liczKLwA6jBy7oA0.svg)](https://asciinema.org/a/liczKLwA6jBy7oA0)
+![asciicast](assets/demo.gif)
 
 ## Architecture
 
-┌─────────────┐     ┌──────────────┐     ┌─────────────┐     ┌──────────┐
-│  API Search  │────▶│  Feeder      │────▶│  Workers    │────▶│ Collector│
-│  (paginated) │     │  (goroutine) │     │  (N goroutines)   │ (main)   │
-└─────────────┘     └──────────────┘     └─────────────┘     └────┬─────┘
-                                                                    │
-                         ┌──────────────┐     ┌─────────────┐      │
-                         │   SQLite     │◀────│   Parser    │◀─────┘
-                         │  (4 tables)  │     │  (pipe log) │
-                         └──────────────┘     └─────────────┘
+```mermaid
+graph LR
+    A[API Search] --> B[Feeder]
+    B --> C[Workers]
+    C --> D[Collector]
+    D --> E[Parser]
+    E --> F[SQLite]
+```
 
 1. **Feeder**: Paginates the Showdown search API, sends replay IDs to a channel
 2. **Workers**: N goroutines fetch replay JSON from the API
@@ -111,6 +108,7 @@ make test -race
 ```
 
 31 tests across parser (22) and storage (9) covering:
+
 - Battle log parsing (all event types, edge cases)
 - SQLite CRUD with in-memory database
 - Concurrent worker pool (race detector)
