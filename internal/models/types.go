@@ -1,4 +1,4 @@
-// Package models defines the data structures for the application's models
+// Package models defines the core data structures for the scraper pipeline
 package models
 
 type SearchResult struct {

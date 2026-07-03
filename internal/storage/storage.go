@@ -5,7 +5,6 @@ import (
 	"database/sql"
 	"fmt"
 
-	// just need the driver
 	_ "modernc.org/sqlite"
 
 	"github.com/alexmatias/scraper-for-showdown-replays/internal/models"

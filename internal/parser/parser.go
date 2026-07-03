@@ -125,7 +125,7 @@ func Parse(log string) (*BattleLog, error) {
 	return battle, nil
 }
 
-// --- Auxiliar methods of the BattleLog ---
+// --- Auxiliary methods of the BattleLog ---
 func (b *BattleLog) addPlayer(args string) {
 	// "|player|p1|andjelicpwnsu|wallace|1320"
 	parts := strings.Split(args, "|")

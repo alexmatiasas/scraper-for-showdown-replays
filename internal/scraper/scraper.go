@@ -1,4 +1,4 @@
-// Package scraper provides a simple interface for scraping battle logs from the client API and storing them in the database.
+// Package scraper orchestrates concurrent downloading and storage of Pokemon Showdown replays.
 package scraper
 
 import (
@@ -26,7 +26,7 @@ type Scraper struct {
 }
 
 func New(c *client.Client, store *storage.Store, cfg Config) *Scraper {
-	// default values for workers and delay time (0.5 s)
+	// Apply sane defaults so callers can pass a zero-value Config
 	if cfg.Workers <= 0 {
 		cfg.Workers = 5
 	}
