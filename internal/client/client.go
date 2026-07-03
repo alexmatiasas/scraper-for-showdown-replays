@@ -83,34 +83,28 @@ func (c *Client) FetchReplay(ctx context.Context, id string) (*models.Replay, er
 		return nil, fmt.Errorf("id invalid: %w", err)
 	}
 
-	// get a url
 	u := baseURL + "/" + id + ".json"
 
-	// making request
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u, http.NoBody)
 	if err != nil {
 		return nil, fmt.Errorf("creating request: %w", err)
 	}
 
-	// executing request with the client
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("executing request: %w", err)
 	}
 	defer func() { _ = resp.Body.Close() }()
 
-	// verify status code
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("unexpected status: %d", resp.StatusCode)
 	}
 
-	// read body
 	body, err := limitJSONResponse(resp)
 	if err != nil {
 		return nil, err
 	}
 
-	// unmarshal to *models.Replay
 	var replay models.Replay
 	if err := json.Unmarshal(body, &replay); err != nil {
 		return nil, fmt.Errorf("parsing JSON: %w", err)
@@ -128,7 +122,7 @@ func validateID(id string) error {
 	if len(parts) < 2 {
 		return fmt.Errorf("invalid replay id format: %s", id)
 	}
-	// Verify the las part is numeric
+	// Verify the last part is numeric
 
 	if _, err := strconv.Atoi(parts[len(parts)-1]); err != nil {
 		return fmt.Errorf("replay id must end with numeric value: %s", id)

@@ -16,7 +16,7 @@ import (
 
 func main() {
 	// 1. Parse flags
-	formatStr := flag.String("format", "gen9ou", "battle format gen9vgc2024")
+	formatStr := flag.String("format", "gen9ou", "battle format gen9ou")
 	limit := flag.Int("limit", 5, "max number of replays to download")
 	workers := flag.Int("workers", 5, "number of parallel workers")
 	delay := flag.Duration("delay", 500*time.Millisecond, "delay between requests")

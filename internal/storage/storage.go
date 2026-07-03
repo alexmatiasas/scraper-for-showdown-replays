@@ -1,4 +1,4 @@
-// Package storage.
+// Package storage provides a simple interface for storing and retrieving battle logs in a SQLite database.
 package storage
 
 import (

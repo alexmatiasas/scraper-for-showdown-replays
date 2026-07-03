@@ -1,4 +1,4 @@
-// Package scraper.
+// Package scraper provides a simple interface for scraping battle logs from the client API and storing them in the database.
 package scraper
 
 import (
