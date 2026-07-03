@@ -63,7 +63,7 @@ sqlite3 replays.db "SELECT COUNT(*) FROM replays;"
 | `-limit` | `5` | Max number of replays to download |
 | `-workers` | `5` | Number of parallel download workers |
 | `-delay` | `500ms` | Delay between API requests |
-| `-timeout` | `30s` | HTTP request timeout |
+| `-timeout` | `10s` | HTTP request timeout |
 | `-db` | `scraper.db` | Path to SQLite database |
 
 ## Project Structure

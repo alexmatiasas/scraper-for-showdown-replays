@@ -1,4 +1,4 @@
-// Package client provides a simple interface for interacting with the client API.
+// Package client provides a simple interface for interacting with the Pokemon Showdown replay API.
 package client
 
 import (
