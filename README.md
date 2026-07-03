@@ -14,6 +14,12 @@ The pipeline uses a **worker pool pattern** with goroutines and channels for
 concurrent downloading, while SQLite writes are serialized through a single
 collector goroutine.
 
+## Demo
+
+## Demo
+
+[![asciicast](https://asciinema.org/a/liczKLwA6jBy7oA0.svg)](https://asciinema.org/a/liczKLwA6jBy7oA0)
+
 ## Architecture
 
 ┌─────────────┐     ┌──────────────┐     ┌─────────────┐     ┌──────────┐
