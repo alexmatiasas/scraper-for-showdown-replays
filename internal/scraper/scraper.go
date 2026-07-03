@@ -10,6 +10,8 @@ import (
 
 	"github.com/alexmatias/scraper-for-showdown-replays/internal/client"
 	"github.com/alexmatias/scraper-for-showdown-replays/internal/models"
+	"github.com/alexmatias/scraper-for-showdown-replays/internal/parser"
+	"github.com/alexmatias/scraper-for-showdown-replays/internal/storage"
 )
 
 type Config struct {
@@ -19,10 +21,11 @@ type Config struct {
 
 type Scraper struct {
 	client *client.Client
+	store  *storage.Store
 	config Config
 }
 
-func New(c *client.Client, cfg Config) *Scraper {
+func New(c *client.Client, store *storage.Store, cfg Config) *Scraper {
 	// default values for workers and delay time (0.5 s)
 	if cfg.Workers <= 0 {
 		cfg.Workers = 5
@@ -31,7 +34,7 @@ func New(c *client.Client, cfg Config) *Scraper {
 		cfg.Delay = 500 * time.Millisecond
 	}
 
-	return &Scraper{client: c, config: cfg}
+	return &Scraper{client: c, store: store, config: cfg}
 }
 
 // Run executes the complete pipeline: feed -> workers -> collector.
@@ -67,7 +70,22 @@ func (s *Scraper) Run(ctx context.Context, format models.Format, limit int) erro
 	for replay := range results {
 		count++
 		log.Printf("[%d/%d] %s - %v", count, limit, replay.ID, replay.Players)
-		// TODO: Save in SQLite when storage available
+
+		battle, err := parser.Parse(replay.Log)
+		if err != nil {
+			log.Printf("error parsing %s: %v", replay.ID, err)
+			continue
+		}
+
+		// Set metadata from API (parser doesn't have this)
+		battle.ID = replay.ID
+		battle.Format = replay.FormatID
+
+		err = s.store.SaveReplay(battle, replay)
+		if err != nil {
+			log.Printf("error saving %s: %v", replay.ID, err)
+			continue
+		}
 	}
 
 	// 5. Verify errors from the feeder
