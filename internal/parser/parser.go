@@ -1,4 +1,4 @@
-// Package parser.
+// Package parser provides functions to parse battle log strings into structured data.
 package parser
 
 import (
