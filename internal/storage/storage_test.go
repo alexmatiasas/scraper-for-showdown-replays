@@ -3,8 +3,8 @@ package storage
 import (
 	"testing"
 
-	"github.com/alexmatias/scraper-for-showdown-replays/internal/models"
-	"github.com/alexmatias/scraper-for-showdown-replays/internal/parser"
+	"github.com/alexmatiasas/scraper-for-showdown-replays/internal/models"
+	"github.com/alexmatiasas/scraper-for-showdown-replays/internal/parser"
 )
 
 func testBattle() *parser.BattleLog {

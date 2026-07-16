@@ -8,10 +8,10 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/alexmatias/scraper-for-showdown-replays/internal/client"
-	"github.com/alexmatias/scraper-for-showdown-replays/internal/models"
-	"github.com/alexmatias/scraper-for-showdown-replays/internal/scraper"
-	"github.com/alexmatias/scraper-for-showdown-replays/internal/storage"
+	"github.com/alexmatiasas/scraper-for-showdown-replays/internal/client"
+	"github.com/alexmatiasas/scraper-for-showdown-replays/internal/models"
+	"github.com/alexmatiasas/scraper-for-showdown-replays/internal/scraper"
+	"github.com/alexmatiasas/scraper-for-showdown-replays/internal/storage"
 )
 
 func main() {

@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/alexmatias/scraper-for-showdown-replays/internal/models"
+	"github.com/alexmatiasas/scraper-for-showdown-replays/internal/models"
 )
 
 const (

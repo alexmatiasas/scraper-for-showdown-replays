@@ -8,10 +8,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/alexmatias/scraper-for-showdown-replays/internal/client"
-	"github.com/alexmatias/scraper-for-showdown-replays/internal/models"
-	"github.com/alexmatias/scraper-for-showdown-replays/internal/parser"
-	"github.com/alexmatias/scraper-for-showdown-replays/internal/storage"
+	"github.com/alexmatiasas/scraper-for-showdown-replays/internal/client"
+	"github.com/alexmatiasas/scraper-for-showdown-replays/internal/models"
+	"github.com/alexmatiasas/scraper-for-showdown-replays/internal/parser"
+	"github.com/alexmatiasas/scraper-for-showdown-replays/internal/storage"
 )
 
 type Config struct {
